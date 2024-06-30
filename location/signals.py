@@ -7,14 +7,16 @@ from location.utils.utils import get_nearest_instance
 
 
 @receiver(post_save, sender=EventModel)
-def create_user_profile(
-    created: bool, sender: Type[EventModel], instance: EventModel, *args, **kwargs
+def add_lat_long_event_model(
+    sender: Type[EventModel], instance: EventModel, created: bool, **kwargs
 ):
     """
     A pre_save signal to get the nearest latitude and longitude.[]
     """
+    breakpoint()
     if created:
         latitude = get_nearest_instance(instance.occurrence_time, LatitudeModel)
         longitude = get_nearest_instance(instance.occurrence_time, LongitudeModel)
         instance.longitude = longitude
         instance.latitude = latitude
+        instance.save(update_fields=['latitude', 'longitude'])
