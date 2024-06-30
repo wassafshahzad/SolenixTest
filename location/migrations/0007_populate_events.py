@@ -8,7 +8,7 @@ from location.utils.utils import populate_event_models
 def load_event_data(apps:Apps, _):
     Event = apps.get_model("location", "EventModel")
 
-    json_file_path = f"{settings.BASE_DIR}\\events.json"
+    json_file_path = f"{settings.BASE_DIR}/events.json"
     populate_event_models(json_file_path, Event)
     
 

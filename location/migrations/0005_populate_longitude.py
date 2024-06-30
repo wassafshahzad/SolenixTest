@@ -8,7 +8,7 @@ from location.utils.utils import populate_position_models
 def load_longitude_data(apps:Apps, _):
     Longitude = apps.get_model("location", "LongitudeModel")
 
-    json_file_path = f"{settings.BASE_DIR}\\longitudes.json"
+    json_file_path = f"{settings.BASE_DIR}/longitudes.json"
     populate_position_models(json_file_path, Longitude)
 
 class Migration(migrations.Migration):
